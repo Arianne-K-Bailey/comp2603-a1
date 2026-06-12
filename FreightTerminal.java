@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-/**
- * The hub that receives packages, packs them into containers,
- * dispatches containers, and produces financial reports.
- */
+/*  The hub that receives packages, packs them into containers, 
+    dispatches containers, and produces financial reports.
+*/
+
 public class FreightTerminal {
 
     // TODO M1: These fields are declared but not yet initialised.
