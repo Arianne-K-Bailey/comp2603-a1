@@ -130,16 +130,35 @@ public class Package {
         return Math.max(weightKg, getVolumetricWeightKg());
     }
 
-    /**
-     * TODO M6: Implement the shipping cost formula.
-     *   1. Look up rate per kg by destination
-     *   2. cost = getBillableWeightKg() * ratePerKg
-     *   3. If fragile: cost *= 1.25
-     *   4. If declaredValue > 0: cost += declaredValue * 0.015
-     *   5. Round: Math.round(cost * 100) / 100.0
-     */
+    // M6: Implement the shipping cost formula.
     public double getShippingCost() {
-        return 0.0; // TODO M6
+        double ratePerKg;
+        switch (destination){
+            case "Trinidad": 
+                ratePerKg = 8.00; break;
+            case "Barbados": 
+                ratePerKg = 12.50; break;
+            case "Jamaica": 
+                ratePerKg = 15.00; break;
+            case "Antigua": 
+                ratePerKg = 18.00; break;
+            case "Grenada": 
+                ratePerKg = 10.00; break;
+            default:
+                ratePerKg = 0.0; break;
+        }
+
+        double cost = getBillableWeightKg() * ratePerKg;
+
+        if (isFragile){
+            cost *= 1.25;
+        }
+
+        if (declaredValue > 0){
+            cost += declaredValue * 0.015;
+        }
+
+        return Math.round(cost * 100) / 100.0;
     }
 
     /**
