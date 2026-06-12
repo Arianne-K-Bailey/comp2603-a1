@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Package {
 
-    // TODO M1: Initialise this static counter to 1.
+    // M1: Initialise this static counter to 1.
     private static int nextTrackingNumber = 1;
 
     private static final List<String> VALID_DESTINATIONS = Arrays.asList(
@@ -27,7 +27,7 @@ public class Package {
     private boolean isFragile;
     private double declaredValue;
 
-    // TODO M2: Implement this constructor.
+    // M2: Implement this constructor.
     public Package(String senderName, String receiverName, double weightKg,
                    int lengthCm, int widthCm, int heightCm,
                    String destination, boolean isFragile, double declaredValue) {
@@ -66,14 +66,10 @@ public class Package {
         this.declaredValue = declaredValue;
     }
 
-    /**
-     * Convenience constructor: not fragile, no declared value.
-     * TODO M3: Chain to the full constructor using this(...) with
-     *   isFragile=false and declaredValue=0.0
-     */
+    // M3: Chain to the full constructor using this(...) with isFragile = false and declaredValue = 0.0
     public Package(String senderName, String receiverName, double weightKg,
                    int lengthCm, int widthCm, int heightCm, String destination) {
-        // TODO M3: Write the this(...) call here
+        this(senderName, receiverName, weightKg, lengthCm, widthCm, heightCm, destination, false, 0.0);
     }
 
     // --- Getters ---

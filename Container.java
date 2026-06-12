@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Container {
 
-    // TODO M1: Initialise this static counter to 1.
+    // M1: Initialise this static counter to 1.
     private static int nextContainerId = 1;
 
     // TODO M1: These fields are declared but not yet assigned.
@@ -16,7 +16,7 @@ public class Container {
     private double maxWeightKg;
     private ArrayList<Package> packages;
 
-    //TODO M2: Implement this constructor.
+    // M2: Implement this constructor.
     public Container(String destination, double maxWeightKg) {
         if (destination == null)
             throw new IllegalArgumentException("Destination is NULL.");
@@ -32,12 +32,9 @@ public class Container {
         packages = new ArrayList<Package>();
     }
 
-    /**
-     * Convenience constructor: default capacity of 500 kg.
-     * TODO M3: Chain to the 2-param constructor using this(...)
-     */
+    // M3: Chain to the 2-param constructor using this(...)
     public Container(String destination) {
-        // TODO M3: Write the this(...) call here
+        this(destination, 500.0);
     }
 
     // --- Getters ---
