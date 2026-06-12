@@ -14,8 +14,7 @@ public class Package {
         "Trinidad", "Barbados", "Jamaica", "Antigua", "Grenada"
     );
 
-    // TODO M1: These fields are declared but not yet assigned.
-    // Your constructors (M2, M3) must assign them.
+    // M1: These fields are declared but not yet assigned.
     private String trackingId;
     private String senderName;
     private String receiverName;
@@ -73,10 +72,46 @@ public class Package {
     }
 
     // --- Getters ---
-    // TODO M4: Write getters for ALL fields:
-    //   getTrackingId(), getSenderName(), getReceiverName(), getWeightKg(),
-    //   getLengthCm(), getWidthCm(), getHeightCm(), getDestination(),
-    //   isFragile(), getDeclaredValue()
+    // M4: Write getters for ALL fields:
+    public String getTrackingId(){
+        return this.trackingId;
+    }
+
+    public String getSenderName(){
+        return this.senderName;
+    }
+    
+    public String getReceiverName(){
+        return this.receiverName;
+    }
+    
+    public double getWeightKg(){
+        return this.weightKg;
+    } 
+    
+    public int getLengthCm(){
+        return this.lengthCm;
+    } 
+    
+    public int getWidthCm(){
+        return this.widthCm;
+    } 
+    
+    public int getHeightCm(){
+        return this.heightCm;
+    } 
+    
+    public String getDestination(){
+        return this.destination;
+    }
+    
+    public boolean isFragile(){
+        return this.isFragile;
+    } 
+    
+    public double getDeclaredValue(){
+        return this.declaredValue;
+    }
 
     // --- Computed methods ---
 

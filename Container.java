@@ -9,8 +9,7 @@ public class Container {
     // M1: Initialise this static counter to 1.
     private static int nextContainerId = 1;
 
-    // TODO M1: These fields are declared but not yet assigned.
-    // Your constructors (M2, M3) must assign them.
+    // M1: These fields are declared but not yet assigned.
     private String containerId;
     private String destination;
     private double maxWeightKg;
@@ -38,7 +37,18 @@ public class Container {
     }
 
     // --- Getters ---
-    // TODO M4: Write getters for containerId, destination, maxWeightKg
+    // M4: Write getters for containerId, destination, maxWeightKg
+    public String getContainerId(){
+        return this.containerId;
+    }
+
+    public String getDestination(){
+        return this.destination;
+    }
+
+    public double getMaxWeight(){
+        return this.maxWeightKg;
+    }
 
     /**
      * TODO M8: Add a package to this container.
