@@ -6,14 +6,13 @@ import java.util.ArrayList;
 
 public class FreightTerminal {
 
-    // TODO M1: These fields are declared but not yet initialised.
-    // Your constructor (M2) must initialise them.
+    // M1: These fields are declared but not yet initialised.
     private String terminalName;
     private ArrayList<Package> pendingPackages;
     private ArrayList<Container> activeContainers;
     private ArrayList<Container> dispatchedContainers;
 
-    // TODO M2: Initialise terminalName and all three ArrayLists.
+    // M2: Initialise terminalName and all three ArrayLists.
     public FreightTerminal(String terminalName) {
         this.terminalName = terminalName;
 
@@ -61,37 +60,58 @@ public class FreightTerminal {
         return destinations.size();
     }
 
-    /**
-     * TODO M9: Move all activeContainers to dispatchedContainers.
-     * Clear activeContainers. Return the count dispatched.
-     */
+    // M9: Move all activeContainers to dispatchedContainers.
     public int dispatchAll() {
-        return 0; // TODO M9
+        dispatchedContainers.addAll(activeContainers);
+        activeContainers.clear();
+
+        return dispatchedContainers.size();
     }
 
-    /**
-     * TODO M9: Return the sum of getTotalRevenue() across all
-     * dispatched containers.
-     */
+    // M9: Return the sum of getTotalRevenue() across all dispatched containers.
     public double getTotalRevenue() {
-        return 0.0; // TODO M9
+        double total = 0.0;
+
+        for (Container c : dispatchedContainers){
+            total += c.getTotalRevenue();
+        }
+
+        return total;
     }
 
-    /**
-     * TODO M9: Return the sum of getPackageCount() across all
-     * dispatched containers.
-     */
+    // M9: Return the sum of getPackageCount() across all dispatched containers.
     public int getTotalPackagesShipped() {
-        return 0; // TODO M9
+        int sum = 0;
+
+        for (Container c : dispatchedContainers){
+            sum += c.getPackageCount();
+        }
+
+        return sum;
     }
 
-    /**
-     * TODO M9: Search pending, active containers, and dispatched
-     * containers for a package with the given tracking ID.
-     * Return the Package or null if not found.
-     */
+    // M9: Search pending, active containers, and dispatched containers for a package with the given tracking ID.
     public Package findPackage(String trackingId) {
-        return null; // TODO M9
+        for (Package p : pendingPackages){
+            if (p.getTrackingId().equals(trackingId))
+                return p;
+        }
+
+        for (Container c : activeContainers){
+            for (Package p : c.getPackages()){
+                if (p.getTrackingId().equals(trackingId))
+                    return p;
+            }
+        }
+
+        for (Container c : dispatchedContainers){
+            for (Package p : c.getPackages()){
+                if (p.getTrackingId().equals(trackingId))
+                    return p;
+            }
+        }
+
+        return null;
     }
 
     /**

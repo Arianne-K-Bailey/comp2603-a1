@@ -101,7 +101,18 @@ public class Container {
      * Use StringBuilder and String.format.
      */
     public String getManifest() {
-        return ""; // TODO M9
+        StringBuilder m = new StringBuilder();
+
+        m.append(String.format("=== %s -> %s (%d packages, %.2f / %.2f kg) ===", 
+            containerId, destination, packages.size(), getCurrentWeightKg(), maxWeightKg));
+        
+        for (Package p : packages){
+            m.append("\n  ").append(p.toString());
+        }
+
+        String.format("\n  Container Revenue: $%.2f", getTotalRevenue());
+
+        return m.toString();
     }
 
     /**
@@ -111,12 +122,10 @@ public class Container {
         return packages;
     }
 
-    /**
-     * TODO M9: Return a one-line summary:
-     * "CNT-001 -> Trinidad [3 packages, 17.00 / 500.00 kg]"
-     */
+    // M9: Return a one-line summary
     @Override
     public String toString() {
-        return ""; // TODO M9
+        return String.format("%s -> %s [%d packages, %.2f / %.2f kg]", 
+            containerId, destination, packages.size(), getCurrentWeightKg(), maxWeightKg);
     }
 }
