@@ -34,17 +34,31 @@ public class FreightTerminal {
         return pendingPackages.size();
     }
 
-    /**
-     * TODO M8: This is the HARD method. Group pending packages by destination.
-     * 1. Collect unique destinations in the order they first appear.
-     * 2. For each destination, create a new Container (default capacity).
-     * 3. Add all pending packages for that destination to the container.
-     * 4. Move the container to activeContainers.
-     * 5. Clear pendingPackages.
-     * 6. Return the number of containers created.
-     */
+    // M8: Group pending packages by destination.
     public int packContainers() {
-        return 0; // TODO M8
+        ArrayList<String> destinations = new ArrayList<>();
+
+        for (Package p : pendingPackages){
+            if (!destinations.contains(p.getDestination())){
+                destinations.add(p.getDestination());
+            }
+        }
+
+        for (String destination : destinations){
+            Container c = new Container(destination);
+
+            for (Package p : pendingPackages){
+                if (destination.equals(p.getDestination())){
+                    c.addPackage(p);
+                }
+            }
+
+            activeContainers.add(c);
+        }
+
+        pendingPackages.clear();
+       
+        return destinations.size();
     }
 
     /**
