@@ -27,22 +27,43 @@ public class Package {
     private boolean isFragile;
     private double declaredValue;
 
-    /**
-     * Full constructor with all 9 parameters.
-     * TODO M2: Implement this constructor.
-     *   - Validate: senderName and receiverName non-null and non-empty
-     *   - Validate: weightKg > 0
-     *   - Validate: all dimensions > 0
-     *   - Validate: destination is in VALID_DESTINATIONS
-     *   - Throw IllegalArgumentException on any failure
-     *   - Auto-assign trackingId using String.format("PKG-%04d", nextTrackingNumber)
-     *   - Increment nextTrackingNumber
-     *   - Assign all fields
-     */
+    // TODO M2: Implement this constructor.
     public Package(String senderName, String receiverName, double weightKg,
                    int lengthCm, int widthCm, int heightCm,
                    String destination, boolean isFragile, double declaredValue) {
-        // TODO M2: Write validation and field assignments here
+
+        if (senderName == null || senderName.isEmpty()){
+            throw new IllegalArgumentException("Sender name must not be null or empty.");
+        }            
+        
+        if (receiverName == null || receiverName.isEmpty()){
+            throw new IllegalArgumentException("Receiver name must not be null or empty.");
+        }
+
+        if (weightKg <= 0){
+            throw new IllegalArgumentException("Weight must be greater than 0.");
+        }
+
+        if (lengthCm <= 0 || widthCm <= 0 || heightCm <= 0){
+            throw new IllegalArgumentException("All dimensions must be greater than 0.");
+        }
+
+        if (!VALID_DESTINATIONS.contains(destination)){
+            throw new IllegalArgumentException("This destination is not on the list.");
+        }
+
+        this.trackingId = String.format("PKG-%04d", nextTrackingNumber);
+        nextTrackingNumber++;
+        
+        this.senderName = senderName;
+        this.receiverName = receiverName;
+        this.weightKg = weightKg;
+        this.lengthCm = lengthCm;
+        this.widthCm = widthCm;
+        this.heightCm = heightCm;
+        this.destination = destination;
+        this.isFragile = isFragile;
+        this.declaredValue = declaredValue;
     }
 
     /**
