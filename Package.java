@@ -161,14 +161,15 @@ public class Package {
         return Math.round(cost * 100) / 100.0;
     }
 
-    /**
-     * TODO M7: Return a string in this format:
-     *   "PKG-0001  Alice -> Bob  Trinidad  5.00 kg  $40.00"
-     * If fragile, append "  [FRAGILE]" at the end.
-     * Use String.format for formatting.
-     */
+    // M7: Return a string in this format:
     @Override
     public String toString() {
-        return ""; // TODO M7
+        String base = String.format("PKG-%04d %s -> %s %s %.2f kg $%.2f", 
+            Integer.parseInt(trackingId.substring(4)), senderName, receiverName, destination, getBillableWeightKg(), getShippingCost());
+        
+        if(isFragile)
+            return base + "  [FRAGILE]";
+        else
+            return base;
     }
 }
