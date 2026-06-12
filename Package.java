@@ -115,25 +115,19 @@ public class Package {
 
     // --- Computed methods ---
 
-    /**
-     * TODO M5: Return lengthCm * widthCm * heightCm
-     */
+    // M5: Return lengthCm * widthCm * heightCm
     public int getVolumeCm3() {
-        return 0; // TODO M5
+        return lengthCm * widthCm * heightCm;
     }
 
-    /**
-     * TODO M5: Return getVolumeCm3() / 5000.0
-     */
+    // M5: Return getVolumeCm3() / 5000.0
     public double getVolumetricWeightKg() {
-        return 0.0; // TODO M5
+        return getVolumeCm3() / 5000.0;
     }
 
-    /**
-     * TODO M5: Return Math.max(weightKg, getVolumetricWeightKg())
-     */
+    // M5: Return Math.max(weightKg, getVolumetricWeightKg())
     public double getBillableWeightKg() {
-        return 0.0; // TODO M5
+        return Math.max(weightKg, getVolumetricWeightKg());
     }
 
     /**
