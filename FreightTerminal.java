@@ -114,28 +114,24 @@ public class FreightTerminal {
         return null;
     }
 
-    /**
-     * Returns the list of active containers (for printing manifests in Driver).
-     */
+    // Returns the list of active containers (for printing manifests in Driver).
     public ArrayList<Container> getActiveContainers() {
         return activeContainers;
     }
 
-    /**
-     * TODO M10: Print the formatted daily report.
-     * Format:
-     * === Daily Report: Port of Spain Hub ===
-     * Packages received: 12
-     * Containers packed: 5
-     * Packages shipped: 12
-     * Total revenue: $3248.50
-     *
-     * Revenue by destination:
-     * Trinidad: $199.50 (3 packages)
-     * Barbados: $1403.00 (3 packages)
-     * ...
-     */
+    // M10: Print the formatted daily report.
     public void printDailyReport() {
-        // TODO M10
+        System.out.println("=== Daily Report: " + terminalName + " ===");
+        System.out.printf("%-20s %d%n", "Packages Received:", getTotalPackagesShipped());
+        System.out.printf("%-20s %d%n", "Containers Packed:", dispatchedContainers.size());
+        System.out.printf("%-20s %d%n", "Packages Shipped:", getTotalPackagesShipped());
+        System.out.printf("%-20s $%.2f%n", "Total Revenue:", getTotalRevenue());
+        
+        System.out.println();
+        System.out.println("Revenue by Destination: ");
+
+        for (Container c : dispatchedContainers){
+            System.out.printf("  %-12s $%.2f (%d packages)%n", c.getDestination() + ":", c.getTotalRevenue(), c.getPackageCount());
+        }
     }
 }
